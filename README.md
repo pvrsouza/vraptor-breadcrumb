@@ -11,14 +11,14 @@ VRaptor 3.x
 Install
 =======
 
-Add dependency in pom.xml:
+You only need to copy the jar to your classpath. VRaptor will register plugin when 
+your application starts without any configurations. Available in Maven Repository:
 
-<dependency>
-    <groupId>br.com.breadcrumb</groupId>
-    <artifactId>vraptor-breadcrumb</artifactId>
-    <version>1.0-SNAPSHOT</version>
-</dependency>
-    
+    <dependency>
+        <groupId>br.com.breadcrumb</groupId>
+        <artifactId>vraptor-breadcrumb</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
 
 Usage
 =====
