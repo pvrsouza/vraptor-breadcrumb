@@ -26,7 +26,7 @@ Usage
 Controller
 ----------
 
-All methods annotated with @Resource annotation will be available in the view.
+All methods annotated with @BreadCrumb annotation will be available in the view.
 
     @Resource
     public class IndexController {
