@@ -46,7 +46,7 @@ All methods annotated with @BreadCrumb annotation will be available in the view.
 JSP
 -----
 
-To add the breadcrumb in jsp, you just need to add the user's instance or someone else to a new session like that:
+To add the breadcrumb in jsp, you just need to add the 'breadcrumbSession' session object like that:
 
     <ul class="breadcrumb">
         <c:forEach items="${breadcrumbSession.itens}" var="item"
