@@ -1,10 +1,11 @@
 package br.com.breadcrumb.service;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
 
 import br.com.breadcrumb.annotations.BreadCrumb;
 import br.com.breadcrumb.beans.BreadcrumbSession;
@@ -16,6 +17,8 @@ import br.com.caelum.vraptor.resource.ResourceMethod;
 public class BreadcrumbServiceImpl implements BreadcrumbService {
 
 	private final BreadcrumbSession breadSession;
+	
+	private static final Logger LOG = Logger.getLogger(BreadcrumbServiceImpl.class);
 
 	public BreadcrumbServiceImpl(BreadcrumbSession breadSession) {
 		super();
@@ -36,16 +39,10 @@ public class BreadcrumbServiceImpl implements BreadcrumbService {
 		
 		ItemBreadcrumb item = null;
 		Method m = method.getMethod();
-		Annotation[] annotations = m.getDeclaredAnnotations();
-		
-		for (Annotation annotation : annotations) {
-			if (annotation instanceof BreadCrumb) {
-				item = new ItemBreadcrumb(
-						bundle.getString(((BreadCrumb) annotation).message()),
-						getUriWithoutContext(request),
-						((BreadCrumb) annotation).level());
-			}
-		}
+		item = new ItemBreadcrumb(
+				bundle.getString(m.getAnnotation(BreadCrumb.class).message()),
+				getUriWithoutContext(request),
+				m.getAnnotation(BreadCrumb.class).level());
 
 		return item;
 	}

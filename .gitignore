@@ -6,3 +6,4 @@ classes
 target
 *.class
 target
+.DS_Store

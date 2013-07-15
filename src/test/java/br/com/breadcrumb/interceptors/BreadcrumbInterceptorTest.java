@@ -17,6 +17,7 @@ import org.mockito.MockitoAnnotations;
 import br.com.breadcrumb.annotations.BreadCrumb;
 import br.com.breadcrumb.service.BreadcrumbService;
 import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.resource.DefaultResourceClass;
@@ -40,6 +41,55 @@ public class BreadcrumbInterceptorTest {
 		}
 
 	};
+	
+	@Resource
+	public class BreadcrumbTestController {
+
+		@Get
+		@Path("/")
+		@BreadCrumb(message="home.key", level=0)
+		public void index(){
+			
+		}
+		
+		@Get
+		@Path("/levelone")
+		@BreadCrumb(message="my.leveone.key", level=1)
+		public void levelOne(){
+			
+		}
+		
+		@Get
+		@Path("/leveltwo")
+		@BreadCrumb(message="my.levetwo.key", level=2)
+		public void levelTwo(){
+			
+		}
+	}
+	
+	@Resource
+	public class NewController {
+
+		@Get
+		@Path("/new")
+		public void index() {
+
+		}
+
+		@Get
+		@Path("/new/levelone")
+		@BreadCrumb(message="newcontroller.leveone.key", level=1)
+		public void levelOne() {
+
+		}
+
+		@Get
+		@Path("/new/leveltwo")
+		@BreadCrumb(message="newcontroller.levetwo.key", level=2)
+		public void levelTwo() {
+
+		}
+	}
 
 	@Mock private BreadcrumbService service;
 	@Mock private InterceptorStack stack;

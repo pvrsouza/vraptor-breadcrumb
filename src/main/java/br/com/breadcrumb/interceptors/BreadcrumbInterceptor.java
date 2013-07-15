@@ -2,6 +2,8 @@ package br.com.breadcrumb.interceptors;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 import br.com.breadcrumb.annotations.BreadCrumb;
 import br.com.breadcrumb.service.BreadcrumbService;
 import br.com.caelum.vraptor.InterceptionException;
@@ -12,6 +14,8 @@ import br.com.caelum.vraptor.resource.ResourceMethod;
 
 @Intercepts
 public class BreadcrumbInterceptor implements Interceptor {
+	
+	private static final Logger LOG = Logger.getLogger(BreadcrumbInterceptor.class);
 
 	private final BreadcrumbService service;
 	private final HttpServletRequest request;
