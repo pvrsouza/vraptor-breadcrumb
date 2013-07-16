@@ -12,13 +12,12 @@ Install
 =======
 
 You only need to copy the jar to your classpath. VRaptor will register plugin when 
-your application starts without any configurations. Available in Maven Repository:
+your application starts without any configurations. In Terminal do this:
 
-    <dependency>
-        <groupId>br.com.breadcrumb</groupId>
-        <artifactId>vraptor-breadcrumb</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </dependency>
+    $ git clone git@github.com:pvrsouza/vraptor-breadcrumb.git
+    
+    $ cd vraptor-breadcrumb
+    $ mvn install
 
 Usage
 =====
@@ -42,6 +41,31 @@ All methods annotated with @BreadCrumb annotation will be available in the view.
 
         }
     };
+    
+    @Resource
+    public class BreadcrumbTestController {
+
+		@Get
+		@Path("/")
+		@BreadCrumb(message="home.key", level=0)
+		public void index(){
+			
+		}
+		
+		@Get
+		@Path("/levelone")
+		@BreadCrumb(message="my.leveone.key", level=1)
+		public void levelOne(){
+			
+		}
+		
+		@Get
+		@Path("/leveltwo")
+		@BreadCrumb(message="my.levetwo.key", level=2)
+		public void levelTwo(){
+			
+		}
+	}
 
 JSP
 -----
