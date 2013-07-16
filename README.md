@@ -18,6 +18,14 @@ your application starts without any configurations. In Terminal do this:
     
     $ cd vraptor-breadcrumb
     $ mvn install
+    
+In you project pom.xml:
+
+	<dependency>
+		<groupId>br.com.breadcrumb</groupId>
+		<artifactId>vraptor-breadcrumb</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</dependency>
 
 Usage
 =====
